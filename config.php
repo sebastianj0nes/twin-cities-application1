@@ -1,5 +1,5 @@
 <?php
-
+//hi
 // Declare Namespace 
 namespace TwinCitiesApplication;
 // Declare timezone (set)
@@ -49,4 +49,3 @@ $cities = [
 function twinErrorHandler(int $errNo, string $errMsg, string $file, int $line){
     echo "Twin Cities Application error handler got #[$errNo] occurred in [$file] at line [$line]: [$errMsg]";
 };
-?>
