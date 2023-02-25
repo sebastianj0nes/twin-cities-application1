@@ -19,8 +19,8 @@ $windDisc = $array['wind']['speed']['@attributes']['name'];
 $windDirec = $array['wind']['direction']['@attributes']['name'];
 $humidity = $array['humidity']['@attributes']['value'];
 $pressure = $array['pressure']['@attributes']['value'];
-$sunrise = (new DateTime($array['city']['sun']['@attributes']['rise']))->format('h:i:s');
-$sunset = (new DateTime($array['city']['sun']['@attributes']['set']))->format('h:i:s');
+$sunrise = (new DateTime($array['city']['sun']['@attributes']['rise']))->format('H:i:s');
+$sunset = (new DateTime($array['city']['sun']['@attributes']['set']))->format('H:i:s');
 
 // Forecast
 $url = $cities[$city]['forecast'];

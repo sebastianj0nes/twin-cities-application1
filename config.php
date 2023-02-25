@@ -34,7 +34,7 @@ $cities = [
     'munich' => [
         'coord' => ['lat' => 48.158132, 'lng' => 11.560550],
         'current_weather' => 'http://api.openweathermap.org/data/2.5/weather?lat=48.135124&lon=11.581981&mode=xml&units=metric&appid=' . OW_API ,
-        'forecast' => 'http://api.openweathermap.org/data/2.5/forecast?lat=48.135124&lon=11.581981&mode=xml&appid=' . OW_API .'&cnt=7',
+        'forecast' => 'http://api.openweathermap.org/data/2.5/forecast?lat=48.135124&lon=11.581981&mode=xml&units=metric&appid=' . OW_API .'&cnt=7',
         'places' => [
             ['Marienplatz', 48.13744, 11.57545, '<center><h3>Marienplatz</h3><body>Edinburgh Castle is a historic castle in Edinburgh, Scotland. It stands on Castle Rock, which has been occupied by humans since at least the Iron Age, although the nature of the early settlement is unclear.</center>', 'index.php?p=places&poi=6'],
             ['English Garden Munich', 48.16428, 11.60552, '<center><h3>English Garden Munich</h3>The National Museum of Scotland in Edinburgh, Scotland, was formed in 2006 with the merger of the new Museum of Scotland, with collections relating to Scottish antiquities, culture and history.</center>', 'index.php?p=places&poi=7'],
