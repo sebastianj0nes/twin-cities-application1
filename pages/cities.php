@@ -1,16 +1,17 @@
 <?php
 require "config.php";
 
+// Requesting which city is data being pulled for
 $city = $_REQUEST['city'] ?? 'edinburgh';
 
-
-// prepare for javascript
+// Prepare for javascript by converting data to JSON format
 $placesJson = json_encode($cities[$city]['places']);
 $coordJson = json_encode($cities[$city]['coord']);
 
-// Current Weather
+// Current Weather calls using data from API called in $cities
 $url = $cities[$city]['current_weather'];
 $array = convertDataToArray($url, 'xml');
+// Initialising variables to hold current weather info, e.g $name/$condition
 $name = $array['city']['@attributes']['name'];
 $condition = $array['clouds']['@attributes']['name'];
 $temperature = $array['temperature']['@attributes']['value'];
@@ -22,14 +23,18 @@ $pressure = $array['pressure']['@attributes']['value'];
 $sunrise = (new DateTime($array['city']['sun']['@attributes']['rise']))->format('H:i:s');
 $sunset = (new DateTime($array['city']['sun']['@attributes']['set']))->format('H:i:s');
 
-// Forecast
+// Forecast variables
 $url = $cities[$city]['forecast'];
 $forecastArray = convertDataToArray($url, 'xml');
 $forecasts = $forecastArray['forecast']['time'];
 
+// Create a counter
 $i = 1;
+// Loop through forecast data
 foreach ($forecasts as $forecast) {
+    // Get forecast data and store in variables
     $cloudType = $forecast['clouds']['@attributes']['value'];
+    // Creating array to hold all relevant forecast data
     $forecastData[$i] = [
         'windspeed' => $forecast['windSpeed']['@attributes']['mps'],
         'temperature' => $forecast['temperature']['@attributes']['value'],
@@ -43,6 +48,8 @@ foreach ($forecasts as $forecast) {
 //rename images to not have spaces
 function generateWeatherIcon($cloudType = null)
 {
+    // Switch statement to generate weather images depending 
+    // on the weather data returned
     switch ($cloudType) {
         case 'broken clouds':
             $result = 'fa-cloud';
@@ -78,12 +85,14 @@ function generateWeatherIcon($cloudType = null)
 }
 ?>
 
+<!-- Displaying weather data in Bootstrap rows/columns -->
 <div class="row">
     <div class="col-md-12">
         <h1><?php echo ucfirst($city); ?></h1>
     </div>
     <div class="col-md-6">
         <div class="card">
+            <!-- Holding map data -->
             <div class="card-header">Map</div>
             <div class="card-body">
                 <div id="map"></div>
@@ -93,6 +102,7 @@ function generateWeatherIcon($cloudType = null)
 
     <div class="col-md-6">
         <div class="card">
+            <!-- Displaying all weather data -->
             <div class="card-header">Weather Conditions</div>
             <div class="card-body">
                 <table class="table table-striped">
@@ -145,6 +155,7 @@ function generateWeatherIcon($cloudType = null)
                 <table class="table">
                     <tr>
                         <?php
+                        // Loop through all forecast data and echo to page
                         foreach ($forecastData as $day => $forecast) {
                             echo '<td>';
 

@@ -1,5 +1,7 @@
 <?php
+// Import relevant files
 require 'helpers.php';
+// Create array to hold different page loads
 $routes = [
     'homepage' => 'pages/homepage.php',
     'cities' => 'pages/cities.php',
@@ -31,6 +33,7 @@ $file = $routes[$page];
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Navbar -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -43,6 +46,7 @@ $file = $routes[$page];
             </div>
         </div>
     </nav>
+    <!-- Load content depending on page loaded -->
     <div class="container-fluid mb-3">
         <?php require($file); ?>
     </div>
