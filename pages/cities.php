@@ -93,7 +93,7 @@ function generateWeatherIcon($cloudType = null)
     <div class="col-md-6">
         <div class="card">
             <!-- Holding map data -->
-            <div class="card-header bg-danger text-center">Map</div>
+            <div class="card-header bg-success text-center">Map</div>
             <div class="card-body">
                 <div id="map"></div>
             </div>
@@ -103,7 +103,7 @@ function generateWeatherIcon($cloudType = null)
     <div class="col-md-6">
         <div class="card">
             <!-- Displaying all weather data -->
-            <div class="card-header bg-danger text-center">Weather Conditions</div>
+            <div class="card-header bg-success text-center">Weather Conditions</div>
             <div class="card-body">
                 <table class="table table-striped">
                     <tbody>
