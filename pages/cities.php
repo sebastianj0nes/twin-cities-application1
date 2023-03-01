@@ -24,8 +24,8 @@ $sunrise = (new DateTime($array['city']['sun']['@attributes']['rise']))->format(
 $sunset = (new DateTime($array['city']['sun']['@attributes']['set']))->format('H:i:s');
 
 // Forecast variables
-$url = $cities[$city]['forecast'];
-$forecastArray = convertDataToArray($url, 'xml');
+$forecastUrl = $cities[$city]['forecast'];
+$forecastArray = convertDataToArray($forecastUrl, 'xml');
 $forecasts = $forecastArray['forecast']['time'];
 
 // Create a counter
@@ -87,13 +87,13 @@ function generateWeatherIcon($cloudType = null)
 
 <!-- Displaying weather data in Bootstrap rows/columns -->
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 text-center">
         <h1><?php echo ucfirst($city); ?></h1>
     </div>
     <div class="col-md-6">
         <div class="card">
             <!-- Holding map data -->
-            <div class="card-header">Map</div>
+            <div class="card-header bg-danger text-center">Map</div>
             <div class="card-body">
                 <div id="map"></div>
             </div>
@@ -103,7 +103,7 @@ function generateWeatherIcon($cloudType = null)
     <div class="col-md-6">
         <div class="card">
             <!-- Displaying all weather data -->
-            <div class="card-header">Weather Conditions</div>
+            <div class="card-header bg-danger text-center">Weather Conditions</div>
             <div class="card-body">
                 <table class="table table-striped">
                     <tbody>
@@ -209,6 +209,7 @@ function generateWeatherIcon($cloudType = null)
                     content: place[3],
                     width: 1000,
                 });
+                // Add event listeners to markers e.g hovering or click on marker
                 marker.addListener('mouseover', () => infoWindow.open(map, marker))
                 marker.addListener('mouseout', () => infoWindow.close())
                 marker.addListener('click', function() {
