@@ -11,6 +11,12 @@ define("OW_API","e690348f0ace576d480ab186b2be68aa");
     // Google Maps API
 define("G_MAPS_API","AIzaSyBpUaGxwCjLH3xVvnv1OoDX_qtDbKjDQ8c");
 
+// Create mySQL connection using localhost
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "twin_cities";
+
 // Cities constant to hold relevant info on Edinburgh and Munich
 $cities = [
     // Edinburgh Array
