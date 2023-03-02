@@ -175,15 +175,15 @@ function generateWeatherIcon($cloudType = null)
     <h3>RSS Feed</h3>
     <?php 
 
-// Create a connection
+// Create a connection using variables in config file
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-// Check connection
+// Check connection - if no connection kill app and echo the error to user
 if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-// Perform a query
+// Perform a query from city table
 $sql = "SELECT * FROM city";
 $result = mysqli_query($conn, $sql);
 
