@@ -9,6 +9,11 @@ CREATE TABLE city (
     events VARCHAR(500)
 );
 
+CREATE TABLE location_type (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    l_type VARCHAR(50)
+);
+
 CREATE TABLE place_of_interest (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(45) NOT NULL,
@@ -23,13 +28,9 @@ CREATE TABLE place_of_interest (
     address_line1 VARCHAR(200),
     address_line2 VARCHAR(200),
     city_id INT NOT NULL,
-    l_type VARCHAR(50) NOT NULL,
+    l_type_id INT,
+    FOREIGN KEY (l_type_id) REFERENCES location_type(id),
     FOREIGN KEY (city_id) REFERENCES city(id) 
-);
-
-CREATE TABLE location_type (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    l_type VARCHAR(45)
 );
 
 CREATE TABLE image (
@@ -42,11 +43,6 @@ CREATE TABLE image (
     FOREIGN KEY (place_of_interest_id) REFERENCES place_of_interest(id),
     FOREIGN KEY (city_id) REFERENCES city(id)
 )
-
-ALTER TABLE place_of_interest 
-ADD FOREIGN KEY (l_type) 
-REFERENCES location_type(l_type)
-ON DELETE SET NULL;
 
 --Adding Location Types
 --Not sure what location type is meant to be, so Im making it associated to what type activity the POI is, and so one location_type can have multiple POIs, but a POI can only have one location type.
