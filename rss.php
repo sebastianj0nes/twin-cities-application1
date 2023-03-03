@@ -7,8 +7,9 @@ require "config.php";
 $pdo = new PDO('mysql:host='.DBMS['HOST'].';dbname='.DBMS['DB'], DBMS['UN'], DBMS['PW'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
 // Formulate the SQL and run it
-$sql = 'SELECT `id`, `name`, `lat`, `lon` 
-		FROM `city`';
+$sql = 'SELECT *
+		FROM `city`
+		WHERE id="1" ';
 
 $query = $pdo->prepare($sql);
 $query->execute();
@@ -36,17 +37,24 @@ $writer->startElement("channel");
 
 $writer->writeElement('title', 'Quotes from our database about our twin-cities, Edinburgh & Munich');
 $writer->writeElement('description', 'These are some quotes from our database.');
-$writer->writeElement('link', 'http://localhost/quotes/?qid=new');
-$writer->writeElement('currentDate', date("D, d M Y H:i:s e"));
 
 foreach ($rss_items as $item) {
 	#----------------------------------------------------
+	?> 
+	<h3>
+	<?php
+	var_dump($item);
+	?>
+	</h3>
+	<?php 
 	$writer->startElement("item");
 	$writer->writeElement('title','ID: '. $item['id'] . PHP_EOL . ' - City: ' . $item['name']);
-	$writer->writeElement("description", 'Lat: ' . $item['lat'] . PHP_EOL . ' & Lon: ' . $item['lon']);
+	$writer->writeElement("Co-ordinates", 'Lat: ' . $item['lat'] . PHP_EOL . ' & Lon: ' . $item['lon']);
+	$writer->writeElement("Description", );
 	$writer->endElement();
     $writer->endElement();
 	
+	// 
    #----------------------------------------------------
 }
 
