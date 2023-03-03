@@ -50,9 +50,9 @@ ON DELETE SET NULL;
 
 --Adding Location Types
 --Not sure what location type is meant to be, so Im making it associated to what type activity the POI is, and so one location_type can have multiple POIs, but a POI can only have one location type.
-INSERT INTO location_type(name) VALUES ('History');
-INSERT INTO location_type(name) VALUES ('Culture');
-INSERT INTO location_type(name) VALUES ('Nature');
+INSERT INTO location_type(`l_type`) VALUES ('History');
+INSERT INTO location_type(`l_type`) VALUES ('Culture');
+INSERT INTO location_type(`l_type`) VALUES ('Nature');
 
 -- --Inputing Edinburgh data
 INSERT INTO city(`name`, `lat`, `lon`, `population`, `country`, `wiki`, `events`) VALUES ('Edinburgh', 55.954251, -3.19267, 554000, 'Scotland', 'https://en.wikipedia.org/wiki/Edinburgh', 'Edinburgh Fringe Festival');
