@@ -37,7 +37,7 @@ CREATE TABLE image (
     title VARCHAR(100),
     img_desc VARCHAR(100),
     img_link VARCHAR(100),
-    place_of_interest_id INT NOT NULL,
+    place_of_interest_id INT,
     city_id INT NOT NULL,
     FOREIGN KEY (place_of_interest_id) REFERENCES place_of_interest(id),
     FOREIGN KEY (city_id) REFERENCES city(id)
@@ -55,10 +55,10 @@ INSERT INTO location_type(`l_type`) VALUES ('Culture');
 INSERT INTO location_type(`l_type`) VALUES ('Nature');
 
 -- --Inputing Edinburgh data
-INSERT INTO city(`name`, `lat`, `lon`, `population`, `country`, `wiki`, `events`) VALUES ('Edinburgh', 55.954251, -3.19267, 554000, 'Scotland', 'https://en.wikipedia.org/wiki/Edinburgh', 'Edinburgh Fringe Festival');
+INSERT INTO city(`name`, `lat`, `lon`, `population`, `country`, `wiki`, `events`) VALUES ('Edinburgh', '55.954251',' -3.19267', '554000', 'Scotland', 'https://en.wikipedia.org/wiki/Edinburgh', 'Edinburgh Fringe Festival, Royal Edinburgh Military Tattoo, International Sciencee Festival');
 
 -- --Inputing Munich data
-INSERT INTO city(`name`, `lat`, `lon`, `population`, `country`, `wiki`, `events`) VALUES ('Munich', 48.158132, 11.560550, 1456000, 'Germany', 'https://en.wikipedia.org/wiki/Munich', 'Oktoberfest');
+INSERT INTO city(`name`, `lat`, `lon`, `population`, `country`, `wiki`, `events`) VALUES ('Munich', '48.158132', '11.560550', '1456000', 'Germany', 'https://en.wikipedia.org/wiki/Munich', 'Oktoberfest, Tollwood Festival, Kocherlball');
 
 INSERT INTO place_of_interest(`name`, `lat`, `lon`, `established`, `description`, `capacity`, `wiki`, `website`, `postcode`, `address_line1`, `address_line2`, `city_id`, `l_type`) VALUES ('Edinburgh Castle', '55.948612', '-3.200833', '1103', 'Edinburgh Castle is a historic castle in Edinburgh, Scotland. It stands on Castle Rock, which has been occupied by humans since at least the Iron Age, although the nature of the early settlement is unclear. There has been a royal castle on the rock since at least the reign of David I in the 12th century, and the site continued to be a royal residence until 1633. From the 15th century, the castle''s residential role declined, and by the 17th century it was principally used as military barracks with a large garrison. Its importance as a part of Scotland''s national heritage was recognised increasingly from the early 19th century onwards, and various restoration programmes have been carried out over the past century and a half.', '1000', 'https://en.wikipedia.org/wiki/Edinburgh_Castle', 'https://www.edinburghcastle.scot/', 'EH1 2NG', 'Castlehill', 'Edinburgh', '1', 'History');
 INSERT INTO place_of_interest(`name`, `lat`, `lon`, `established`, `description`, `capacity`, `wiki`, `website`, `postcode`, `address_line1`, `address_line2`, `city_id`, `l_type`) VALUES ('National Museum of Scotland', '55.947519', '-3.190422', '1866', 'The National Museum of Scotland in Edinburgh, Scotland, was formed in 2006 with the merger of the new Museum of Scotland, with collections relating to Scottish antiquities, culture and history, and the adjacent Royal Scottish Museum (opened in 1866 as the Edinburgh Museum of Science and Art, renamed in 1904, and for the period between 1985 and the merger named the Royal Museum of Scotland or simply the Royal Museum), with international collections covering science and technology, natural history, and world cultures. The two connected buildings stand beside each other on Chambers Street, by the intersection with the George IV Bridge, in central Edinburgh. The museum is part of National Museums Scotland. Admission is free.', '1500', 'https://en.wikipedia.org/wiki/National_Museum_of_Scotland', 'https://www.nms.ac.uk/national-museum-of-scotland/', 'EH1 1JF', 'Chambers Street', 'Edinburgh', '1', 'Culture');
