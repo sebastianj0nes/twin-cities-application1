@@ -1,7 +1,7 @@
 <?php
 
-// Create a connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+require "config.php"; 
+
 
 // Check connection
 if (!$conn) {

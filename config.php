@@ -11,11 +11,14 @@ define("OW_API","e690348f0ace576d480ab186b2be68aa");
     // Google Maps API
 define("G_MAPS_API","AIzaSyBpUaGxwCjLH3xVvnv1OoDX_qtDbKjDQ8c");
 
-// Create mySQL connection using localhost
+// Initialise variables to connect to mySQL db
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "twin_cities";
+// Create a connection using variables
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
 
 // Cities constant to hold relevant info on Edinburgh and Munich
 $cities = [
@@ -55,3 +58,4 @@ $cities = [
 function twinErrorHandler(int $errNo, string $errMsg, string $file, int $line){
     echo "Twin Cities Application error handler got #[$errNo] occurred in [$file] at line [$line]: [$errMsg]";
 };
+?>
