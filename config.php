@@ -11,13 +11,14 @@ define("OW_API","e690348f0ace576d480ab186b2be68aa");
     // Google Maps API
 define("G_MAPS_API","AIzaSyBpUaGxwCjLH3xVvnv1OoDX_qtDbKjDQ8c");
 
-// Initialise variables to connect to mySQL db
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "twin_cities";
-// Create a connection using variables
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Define database constants to make a connection
+define ('DBMS', [
+    'HOST' => 'localhost',
+    'DB' => 'twin_cities',
+    'UN' => 'root',
+    'PW' => ''
+]);
 
 
 // Cities constant to hold relevant info on Edinburgh and Munich

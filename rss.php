@@ -1,12 +1,10 @@
 <?php
 
-require "/Applications/XAMPP/xamppfiles/htdocs/assignment/twin-cities-application/config.php";
+require "config.php";
 
 @date_default_timezone_set("GMT");
 
-
-
-$pdo = new PDO('mysql:host=localhost;dbname=twin_cities', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+$pdo = new PDO('mysql:host='.DBMS['HOST'].';dbname='.DBMS['DB'], DBMS['UN'], DBMS['PW'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
 # formulate the SQL and run it
 $sql = 'SELECT `id`, `name`, `lat`, `lon` 
@@ -44,8 +42,8 @@ $writer->writeElement('pubDate', date("D, d M Y H:i:s e"));
 foreach ($rss_items as $item) {
 	#----------------------------------------------------
 	$writer->startElement("item");
-	$writer->writeElement('title', $item['id'] . PHP_EOL . ' - ' . $item['name']);
-	$writer->startElement("description");
+	$writer->writeElement('title','ID: '. $item['id'] . PHP_EOL . ' - City: ' . $item['name']);
+	$writer->writeElement("description", 'Lat: ' . $item['lat'] . PHP_EOL . ' & Lon: ' . $item['lon']);
 	$writer->endElement();
     $writer->endElement();
 	
