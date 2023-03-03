@@ -1,31 +1,31 @@
-CREATE TABLE city (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(45) NOT NULL,
-    lat DECIMAL(8,6) NOT NULL, 
-    lon DECIMAL(9,6) NOT NULL,
-    population INT,
-    country VARCHAR(45) NOT NULL,
-    wiki VARCHAR(100) NOT NULL,
-    famous_people VARCHAR(500)
-);
+-- CREATE TABLE city (
+--     id INT PRIMARY KEY AUTO_INCREMENT,
+--     name VARCHAR(45) NOT NULL,
+--     lat DECIMAL(8,6) NOT NULL, 
+--     lon DECIMAL(9,6) NOT NULL,
+--     population INT,
+--     country VARCHAR(45) NOT NULL,
+--     wiki VARCHAR(100) NOT NULL,
+--     events VARCHAR(500)
+-- );
 
-CREATE TABLE place_of_interest (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(45) NOT NULL,
-    lat DECIMAL(8,6) NOT NULL, 
-    lon DECIMAL(9,6) NOT NULL,
-    established INT,
-    description VARCHAR(1000),
-    capacity INT,
-    wiki VARCHAR(100),
-    website VARCHAR(100),
-    postcode VARCHAR(60),
-    address_line1 VARCHAR(200),
-    address_line2 VARCHAR(200),
-    city_id INT NOT NULL,
-    l_type VARCHAR(50) NOT NULL, --LOCATION TYPE
-    FOREIGN KEY (city_id) REFERENCES city(id) 
-);
+-- CREATE TABLE place_of_interest (
+--     id INT PRIMARY KEY AUTO_INCREMENT,
+--     name VARCHAR(45) NOT NULL,
+--     lat DECIMAL(8,6) NOT NULL, 
+--     lon DECIMAL(9,6) NOT NULL,
+--     established INT,
+--     description VARCHAR(1000),
+--     capacity INT,
+--     wiki VARCHAR(100),
+--     website VARCHAR(100),
+--     postcode VARCHAR(60),
+--     address_line1 VARCHAR(200),
+--     address_line2 VARCHAR(200),
+--     city_id INT NOT NULL,
+--     l_type VARCHAR(50) NOT NULL, --LOCATION TYPE
+--     FOREIGN KEY (city_id) REFERENCES city(id) 
+-- );
 
 CREATE TABLE location_type (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -43,11 +43,11 @@ INSERT INTO location_type(name) VALUES ('History');
 INSERT INTO location_type(name) VALUES ('Culture');
 INSERT INTO location_type(name) VALUES ('Nature');
 
---Inputing Edinburgh data
-INSERT INTO city(name, lat, lon, population, country, wiki, famous_people) VALUES ('Edinburgh', 55.954251, -3.19267, 554000, 'Scotland', 'https://en.wikipedia.org/wiki/Edinburgh', 'Sean Connery, Alexander Graham Bell, Tony Blair, Arthur Conan Doyle, Graeme Souness');
+-- --Inputing Edinburgh data
+-- INSERT INTO city(name, lat, lon, population, country, wiki, famous_people) VALUES ('Edinburgh', 55.954251, -3.19267, 554000, 'Scotland', 'https://en.wikipedia.org/wiki/Edinburgh', 'Sean Connery, Alexander Graham Bell, Tony Blair, Arthur Conan Doyle, Graeme Souness');
 
---Inputing Munich data
-INSERT INTO city(name, lat, lon, population, country, wiki, famous_people) VALUES ('Munich', 48.158132, 11.560550, 1456000, 'Germany', 'https://en.wikipedia.org/wiki/Munich', 'Richard Strauss, Michael Herbig, King Ludwig II of Bavaria, Philipp Lahm, Phillip Plein');
+-- --Inputing Munich data
+-- INSERT INTO city(name, lat, lon, population, country, wiki, famous_people) VALUES ('Munich', 48.158132, 11.560550, 1456000, 'Germany', 'https://en.wikipedia.org/wiki/Munich', 'Richard Strauss, Michael Herbig, King Ludwig II of Bavaria, Philipp Lahm, Phillip Plein');
 
 --Adding POIs from Edinburgh
 INSERT INTO place_of_interest(name, lat, lon, established, description, capacity, wiki, website, postcode, address_line1, address_line2, city_id, l_type) VALUES ('Edinburgh Castle', 55.948612, -3.200833, 1103, 'Edinburgh Castle is a historic castle in Edinburgh, Scotland. It stands on Castle Rock, which has been occupied by humans since at least the Iron Age, although the nature of the early settlement is unclear. There has been a royal castle on the rock since at least the reign of David I in the 12th century, and the site continued to be a royal residence until 1633. From the 15th century, the castle''s residential role declined, and by the 17th century it was principally used as military barracks with a large garrison. Its importance as a part of Scotland''s national heritage was recognised increasingly from the early 19th century onwards, and various restoration programmes have been carried out over the past century and a half.', 1000, 'https://en.wikipedia.org/wiki/Edinburgh_Castle', 'https://www.edinburghcastle.scot/', 'EH1 2NG', 'Castlehill', 'Edinburgh', 1, 'History');
