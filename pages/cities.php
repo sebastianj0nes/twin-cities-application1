@@ -184,7 +184,7 @@ function generateWeatherIcon($cloudType = null)
         let options = {
             zoom: 13,
             center: <?php echo $coordJson; ?>,
-            mapTypeControlOptions: {g
+            mapTypeControlOptions: {
                 mapTypeIds: 'roadmap'
             }
         }
