@@ -1,12 +1,12 @@
 <?php
 
+// Require config file
 require "config.php";
 
-@date_default_timezone_set("GMT");
-
+// Create php data object using DBMS variables from config.php
 $pdo = new PDO('mysql:host='.DBMS['HOST'].';dbname='.DBMS['DB'], DBMS['UN'], DBMS['PW'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
-# formulate the SQL and run it
+// Formulate the SQL and run it
 $sql = 'SELECT `id`, `name`, `lat`, `lon` 
 		FROM `city`';
 
@@ -34,10 +34,10 @@ $writer->writeAttribute('xmlns:atom', 'http://www.w3.org/2005/Atom');
 
 $writer->startElement("channel");
 
-$writer->writeElement('title', 'Quotes from our database.');
+$writer->writeElement('title', 'Quotes from our database about our twin-cities, Edinburgh & Munich');
 $writer->writeElement('description', 'These are some quotes from our database.');
 $writer->writeElement('link', 'http://localhost/quotes/?qid=new');
-$writer->writeElement('pubDate', date("D, d M Y H:i:s e"));
+$writer->writeElement('currentDate', date("D, d M Y H:i:s e"));
 
 foreach ($rss_items as $item) {
 	#----------------------------------------------------

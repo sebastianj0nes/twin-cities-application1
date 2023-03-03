@@ -173,36 +173,7 @@ function generateWeatherIcon($cloudType = null)
 </div>
 <div class="row text-center">
     <h3>RSS Feed</h3>
-    <?php 
 
-// Create a connection using variables in config file
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection - if no connection kill app and echo the error to user
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-
-// Perform a query from city table
-$sql = "SELECT * FROM city";
-$result = mysqli_query($conn, $sql);
-
-// Display the results
-if (mysqli_num_rows($result) > 0) {
-  while($row = mysqli_fetch_assoc($result)) {
-    ?> 
-    <p class="text-center"> 
-        <?php echo "ID: " . $row["id"] . " Name: " . $row["name"] . "<br>";?> 
-    </p> 
-    <?php
-  }
-} else {
-  echo "0 results";
-}
-
-// Close the connection
-mysqli_close($conn);
-    ?>
 </div>
 
 <script>
@@ -213,7 +184,7 @@ mysqli_close($conn);
         let options = {
             zoom: 13,
             center: <?php echo $coordJson; ?>,
-            mapTypeControlOptions: {
+            mapTypeControlOptions: {g
                 mapTypeIds: 'roadmap'
             }
         }
