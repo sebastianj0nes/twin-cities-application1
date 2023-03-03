@@ -1,36 +1,47 @@
--- CREATE TABLE city (
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     name VARCHAR(45) NOT NULL,
---     lat DECIMAL(8,6) NOT NULL, 
---     lon DECIMAL(9,6) NOT NULL,
---     population INT,
---     country VARCHAR(45) NOT NULL,
---     wiki VARCHAR(100) NOT NULL,
---     events VARCHAR(500)
--- );
+CREATE TABLE city (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(45) NOT NULL,
+    lat DECIMAL(8,6) NOT NULL, 
+    lon DECIMAL(9,6) NOT NULL,
+    population INT,
+    country VARCHAR(45) NOT NULL,
+    wiki VARCHAR(100) NOT NULL,
+    events VARCHAR(500)
+);
 
--- CREATE TABLE place_of_interest (
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     name VARCHAR(45) NOT NULL,
---     lat DECIMAL(8,6) NOT NULL, 
---     lon DECIMAL(9,6) NOT NULL,
---     established INT,
---     description VARCHAR(1000),
---     capacity INT,
---     wiki VARCHAR(100),
---     website VARCHAR(100),
---     postcode VARCHAR(60),
---     address_line1 VARCHAR(200),
---     address_line2 VARCHAR(200),
---     city_id INT NOT NULL,
---     l_type VARCHAR(50) NOT NULL, --LOCATION TYPE
---     FOREIGN KEY (city_id) REFERENCES city(id) 
--- );
+CREATE TABLE place_of_interest (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(45) NOT NULL,
+    lat DECIMAL(8,6) NOT NULL, 
+    lon DECIMAL(9,6) NOT NULL,
+    established INT,
+    description VARCHAR(1000),
+    capacity INT,
+    wiki VARCHAR(100),
+    website VARCHAR(100),
+    postcode VARCHAR(60),
+    address_line1 VARCHAR(200),
+    address_line2 VARCHAR(200),
+    city_id INT NOT NULL,
+    l_type VARCHAR(50) NOT NULL,
+    FOREIGN KEY (city_id) REFERENCES city(id) 
+);
 
 CREATE TABLE location_type (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    l_type VARCHAR(45),
+    l_type VARCHAR(45)
 );
+
+CREATE TABLE image (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100),
+    img_desc VARCHAR(100),
+    img_link VARCHAR(100),
+    place_of_interest_id INT NOT NULL,
+    city_id INT NOT NULL,
+    FOREIGN KEY (place_of_interest_id) REFERENCES place_of_interest(id),
+    FOREIGN KEY (city_id) REFERENCES city(id)
+)
 
 ALTER TABLE place_of_interest 
 ADD FOREIGN KEY (l_type) 

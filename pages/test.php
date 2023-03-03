@@ -35,3 +35,4 @@ function get_photo(string $name, int $max_photo)
         echo '<hr>';
     }
 }
+?>

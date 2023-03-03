@@ -1,6 +1,6 @@
 <?php
 echo '<pre>';
-echo get_photo('dog', 10);
+echo get_photo('edinburgh', 10);
 echo '</pre>';
 
 
@@ -72,3 +72,4 @@ if (array_key_exists($place_id, $database)) {
 }
 
 var_dump($place);
+?>
