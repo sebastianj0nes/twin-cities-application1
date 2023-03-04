@@ -37,7 +37,7 @@ CREATE TABLE image (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(100),
     img_desc VARCHAR(100),
-    img_link VARCHAR(100),
+    img_link VARCHAR(400),
     place_of_interest_id INT,
     city_id INT NOT NULL,
     FOREIGN KEY (place_of_interest_id) REFERENCES place_of_interest(id),
@@ -72,7 +72,7 @@ INSERT INTO place_of_interest(`name`, `lat`, `lon`, `established`, `description`
 
 --city images
 INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Edinburgh', 'Birds eye view of Edinburgh Castle and beyond', 'https://parliamenthouse-hotel.co.uk/wp-content/uploads/2020/04/Calton-Hill-Edinburgh-Attractions-1.jpg', NULL, '1');
-INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Munich', 'Birds eye view of Munich', 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Aerial_view_of_Munich.jpg' NULL, '2');
+INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Munich', 'Birds eye view of Munich', 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Aerial_view_of_Munich.jpg', NULL, '2');
 
 --place of interest images
 INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Edinburgh Castle', 'Edinburgh Castle, shot from the North', 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Edinburgh_Castle_from_the_North_2015.jpg', '1', '1');
