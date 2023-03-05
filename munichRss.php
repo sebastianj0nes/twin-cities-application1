@@ -1,24 +1,25 @@
 <?php
 
-// Require config file
+// Import config file
 require "config.php";
 
-// Create php data object using DBMS variables from config.php
+// // Set up connection to database
 $pdo = new PDO('mysql:host='.DBMS['HOST'].';dbname='.DBMS['DB'], DBMS['UN'], DBMS['PW'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
-// EDINBURGH
+
+// MUNICH
 // Formulate the SQL for city and run it
-$edinCitySQL = 'SELECT * FROM `city` WHERE id="1" ';
-$edinCityQuery = $pdo->prepare($edinCitySQL);
-$edinCityQuery->execute();
+$munCitySQL = 'SELECT * FROM `city` WHERE id="2"';
+$munCityQuery = $pdo->prepare($munCitySQL);
+$munCityQuery->execute();
 # store all the results in an array
-$edin_city_rss = $edinCityQuery->fetchAll();
+$mun_city_rss = $munCityQuery->fetchAll();
 
 // Formulate the SQL for poi and run it
-$edin_poi_sql = 'SELECT * FROM `place_of_interest` WHERE city_id="1"';
-$edin_poi_query = $pdo->prepare($edin_poi_sql);
-$edin_poi_query->execute();
-$edin_poi_rss = $edin_poi_query->fetchAll();
+$mun_poi_SQL = 'SELECT * FROM `place_of_interest` WHERE city_id="2"';
+$mun_poi_query = $pdo->prepare($mun_poi_SQL);
+$mun_poi_query->execute();
+$mun_poi_rss = $mun_poi_query->fetchAll();
 
 // Formulate the SQL for location type and run it
 $loc_typeSQL = 'SELECT * FROM `location_type`';
@@ -26,14 +27,8 @@ $loc_typeQuery = $pdo->prepare($loc_typeSQL);
 $loc_typeQuery->execute();
 $l_type_rss = $loc_typeQuery->fetchAll();
 
-// Formulate the SQL for image and run it
-$imgSQL = 'SELECT * FROM `image` WHERE city_id="1"';
-$imgQuery = $pdo->prepare($imgSQL);
-$imgQuery->execute();
-$imgRSS = $imgQuery->fetchAll();
 
-
-# crete a new writer object
+// Initiate writer for xml format
 $writer = new XMLWriter();
 
 # output directly to browser
@@ -51,9 +46,8 @@ $writer->startElement("channel");
 $writer->writeElement('title', 'Quotes from our database about our twin-cities, Edinburgh & Munich');
 $writer->writeElement('description', 'This pulls the most up to date information from our database.');
 
-// EDINBURGH
-// Edinburgh City RSS Items
-foreach ($edin_city_rss as $item) {
+// Loop through all rss feed
+foreach ($mun_city_rss as $item) {
 	#----------------------------------------------------
  
 	$writer->startElement("city");					
@@ -69,7 +63,7 @@ foreach ($edin_city_rss as $item) {
 
 // Edinburgh POI RSS Items
 $writer->startElement("POIs");						
-foreach ($edin_poi_rss as $item){
+foreach ($mun_poi_rss as $item){
 	$writer->startElement("place_of_interest");		
 	$writer->writeElement("name", "ID: ". $item['id'] ." Name: " . $item['name']);
 	$writer->writeElement("coordinates", 'Lat: ' . $item['lat'] . " Lon: " . $item['lon']);
@@ -93,21 +87,7 @@ foreach ($l_type_rss as $item) {
 $writer->endElement();
 
 
-// Set up images for when image data is found
-// $writer->startElement("images");
-// foreach ($imgRSS as $item){
-// 	$writer->writeElement("description", "");
-// }
-// $writer->endElement();
-
-// End Channel Element
 $writer->endElement();
-
-
-# end channel
-$writer->endElement();
-
-# end rss
 $writer->endElement();
 
 

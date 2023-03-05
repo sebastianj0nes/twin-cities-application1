@@ -76,9 +76,9 @@ INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city
 
 --place of interest images
 INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Edinburgh Castle', 'Edinburgh Castle, shot from the North', 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Edinburgh_Castle_from_the_North_2015.jpg', '1', '1');
-INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('National Museum of Scotland', 'Inside view of the Museum' 'https://www.nms.ac.uk/media/1162612/2020_09_11_ra_030.jpg', '2', '1');
+INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('National Museum of Scotland', 'Inside view of the Museum', 'https://www.nms.ac.uk/media/1162612/2020_09_11_ra_030.jpg', '2', '1');
 INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Royal Botanic Garden', 'Palm House in the Royal Botanic Garden', 'https://upload.wikimedia.org/wikipedia/commons/f/f8/Palm_House%2C_Royal_Botanic_Garden_Edinburgh.JPG', '3', '1');
-INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Palace of Holyrood House', 'https://upload.wikimedia.org/wikipedia/commons/f/f8/Palm_House%2C_Royal_Botanic_Garden_Edinburgh.JPG', '4', '1');
+INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Palace of Holyrood House','Test','https://upload.wikimedia.org/wikipedia/commons/f/f8/Palm_House%2C_Royal_Botanic_Garden_Edinburgh.JPG', '4', '1');
 INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('Scottish National Gallery of Modern Art', 'Outside view of the Gallery', 'https://www.nationalgalleries.org/sites/default/files/styles/feature-figure/public/visit/venue/SNGMA-ModernOne.jpg', '5', '1');
 INSERT INTO image(`title`, `img_desc`, `img_link`, `place_of_interest_id`, `city_id`) VALUES ('The Scotch Whiskey Experience', 'The inside of the Scotch Whiskey Experience, with a selection on offer', 'https://scotchwhisky.com/images/media/5f0c311661804c6fb2490c179f388ba6.jpg', '6', '1');
 
