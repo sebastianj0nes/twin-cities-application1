@@ -48,49 +48,43 @@ $writer->startElement('rss');
 $writer->writeAttribute('version', '2.0');
 $writer->writeAttribute('xmlns:atom', 'http://www.w3.org/2005/Atom');
 $writer->startElement("channel");					
-$writer->writeElement('title', 'Quotes from our database about our twin-cities, Edinburgh & Munich');
+$writer->writeElement('title', 'Quotes from our database about our twin-cities, Edinburgh and Munich');
 $writer->writeElement('description', 'This pulls the most up to date information from our database.');
-
+$writer->writeElement('link', 'http://localhost/quotes/?qid=new');
 // EDINBURGH
 // Edinburgh City RSS Items
 foreach ($edin_city_rss as $item) {
 	#----------------------------------------------------
  
-	$writer->startElement("city");					
+	$writer->startElement("item");					
 	$writer->writeElement('title','ID:'. $item['id'] . PHP_EOL . '  City: ' . $item['name']);
-	$writer->writeElement("coordinates", 'Lat: ' . $item['lat'] . PHP_EOL . ' & Lon: ' . $item['lon']);
-	$writer->writeElement("description", 'Population: ' . $item['population'] . PHP_EOL . ' Country: ' . $item['country']);
-	$writer->writeElement("wiki", 'Wiki link: ' . $item['wiki']);
-	$writer->writeElement("events", 'Famous events: ' . $item['events']);
+	$writer->writeElement("description", 'Lat: ' . $item['lat'] . PHP_EOL . ' and Lon: ' . $item['lon'] . ', Population:' . $item['population'] . PHP_EOL . ', Country: ' . $item['country'] .', Famous events: ' . $item['events']);
+	$writer->writeElement('link', 'http://localhost/quotes/?qid=' . 1);
+	$writer->endElement();
 	
 	// 
    #----------------------------------------------------
 }
 
 // Edinburgh POI RSS Items
-$writer->startElement("POIs");						
 foreach ($edin_poi_rss as $item){
-	$writer->startElement("place_of_interest");		
-	$writer->writeElement("name", "ID: ". $item['id'] ." Name: " . $item['name']);
-	$writer->writeElement("coordinates", 'Lat: ' . $item['lat'] . " Lon: " . $item['lon']);
-	$writer->writeElement("established", "Established in: " . $item['established']);
-	// $writer->writeElement("description", "Description: " . $item['description']);
-	$writer->writeElement("capacity", "Capacity: " . $item['capacity']);
-	$writer->writeElement("websites", "Wiki: " . $item['wiki'] . " Website: " . $item['website']);
-	$writer->writeElement("address", "Line 1: " . $item['address_line1'] . " Line 2: " . $item['address_line2'] . " Postcode: " . $item['postcode']);
-	$writer->writeElement("ids", "City id: " . $item['city_id'] . " Location Type ID: " . $item['l_type_id']);
+	$writer->startElement("item");						
+	$writer->writeElement("title", "Place Of Interest " . $item['id']);		
+	$writer->writeElement("description", " Name: " . $item['name'] . 'Lat: ' . $item['lat'] . " Lon: " . $item['lon'] . "Established in: " . $item['established'] . "Capacity: " . $item['capacity'] . "Line 1: " . $item['address_line1'] . " Line 2: " . $item['address_line2'] . " Postcode: " . $item['postcode']);
+	$writer->writeElement("link", ''.$item['wiki'].'');
+	// $writer->writeElement("link", ''.$item['website'].'');
+	$writer->writeElement("category", "City id: " . $item['city_id'] . " Location Type ID: " . $item['l_type_id']);
 	$writer->endElement();		 // End place_of_interest individual element					
 }
-$writer->endElement();			// End POIs group element		
 
-$writer->endElement();
-
-// Location type RSS Items
-$writer->startElement("location_type");
-foreach ($l_type_rss as $item) {
-	$writer->writeElement("id", "ID:" . $item['id'] . " matches with " . $item['l_type']);
-}	
-$writer->endElement();
+// // Location type RSS Items
+// foreach ($l_type_rss as $item) {
+// 	$writer->startElement("category");
+// 	$writer->writeElement("title", "Location id");
+// 	$writer->writeElement("description", "ID:" . $item['id'] . " matches with " . $item['l_type']);
+// 	$writer->writeElement('link', 'http://localhost/quotes/?qid=' . 3);
+// 	$writer->endElement();
+// }	
 
 
 // Set up images for when image data is found
@@ -105,9 +99,6 @@ $writer->endElement();
 
 
 # end channel
-$writer->endElement();
-
-# end rss
 $writer->endElement();
 
 

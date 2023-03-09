@@ -1,5 +1,4 @@
 <?php
-//hi
 // Declare Namespace 
 namespace TwinCitiesApplication;
 // Declare timezone (set)
@@ -11,7 +10,6 @@ define("OW_API","e690348f0ace576d480ab186b2be68aa");
     // Google Maps API
 define("G_MAPS_API","AIzaSyBpUaGxwCjLH3xVvnv1OoDX_qtDbKjDQ8c");
 
-
 // Define database constants to make a connection
 define ('DBMS', [
     'HOST' => 'localhost',
@@ -19,7 +17,6 @@ define ('DBMS', [
     'UN' => 'root',
     'PW' => ''
 ]);
-
 
 // Cities constant to hold relevant info on Edinburgh and Munich
 $cities = [
