@@ -1,6 +1,32 @@
 <?php
 require "config.php";
 
+function convertDataToArray($url, $type)
+{
+    //depending on the language given process differently.
+    switch ($type) {
+        case 'xml':
+            $xml = simplexml_load_file($url) or die("Error: FAILURE");
+            $result = json_encode($xml);
+            break;
+        case 'csv':
+            // create file handle to read CSV file
+            $csvToRead = fopen($url, 'r');
+
+            // read CSV file using comma as delimiter
+            while (!feof($csvToRead)) {
+                $csvArray[] = fgetcsv($csvToRead, 1000, ',');
+            }
+
+            fclose($csvToRead);
+            $result = $csvArray;
+            break;
+        default:
+            echo 'something went wrong';
+    }
+    return json_decode($result, true);
+}
+
 // Requesting which city is data being pulled for
 $city = $_REQUEST['city'] ?? 'edinburgh';
 

@@ -1,6 +1,4 @@
 <?php
-// Import relevant files
-require 'helpers.php';
 // Create array to hold different page loads
 $routes = [
     'homepage' => 'pages/homepage.php',
