@@ -37,7 +37,7 @@
                                     Ben Sargeant
                                 </th>
                                 <td class="px-6 py-4">
-                                    <a href="https://github.com/joekts" class=""><img src="img/github-mark.svg" alt="" class="w-auto"></a>
+                                    <a href="https://github.com/BASargeant" class=""><img src="img/github-mark.svg" alt="" class="w-auto"></a>
                                 </td>
                             </tr>
                             <tr>
